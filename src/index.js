@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "modern-normalize/modern-normalize.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
-import App from "./App";
+import App from "./component/App//App";
 
 ReactDOM.render(
   <React.StrictMode>

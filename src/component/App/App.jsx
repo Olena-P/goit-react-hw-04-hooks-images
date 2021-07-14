@@ -1,16 +1,16 @@
-import { Component } from "react";
-import { ToastContainer } from "react-toastify";
-import Searchbar from "./component/Searchbar";
-import ImageGalleryInfo from "./component/ImageGalleryInfo";
-import Container from "./component/Container";
-import "./App.css";
+import { Component } from 'react';
+import { ToastContainer } from 'react-toastify';
+import Searchbar from '../Searchbar/Searchbar';
+import ImageGalleryInfo from '../ImageGalleryInfo/ImageGalleryInfo';
+import Container from '../Container/Container';
+
 
 export default class App extends Component {
   state = {
-    imageName: "",
+    imageName: '',
   };
 
-  handleSearchForm = (imageName) => {
+  handleSearchForm = imageName => {
     this.setState({ imageName });
   };
 

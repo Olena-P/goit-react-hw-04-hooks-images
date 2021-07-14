@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Loader from "react-loader-spinner";
-import ImageGallery from "../ImageGallery";
-import pixabayAPI from "../../service/pixabay-api";
-import Button from "../Button";
-import { toast } from "react-toastify";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
+import ImageGallery from '../ImageGallery/ImageGallery';
+import pixabayAPI from '../../service/pixabay-api';
+import Button from '../Button/Button';
+import { toast } from 'react-toastify';
 
 const Status = {
-  IDLE: "idle",
-  PENDING: "pending",
-  RESOLVED: "resolved",
-  REJECTED: "rejected",
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
 };
 
 export default class ImageGalleryInfo extends Component {
@@ -45,32 +45,32 @@ export default class ImageGalleryInfo extends Component {
 
     pixabayAPI
       .fetchImage(nextName, nextPage)
-      .then((images) => {
+      .then(images => {
         if (images.total === 0) {
-          toast.dark("No images. Please try another query!");
+          toast.dark('No images. Please try another query!');
           this.setState({ status: Status.REJECTED });
 
           return;
         }
 
-        this.setState((prevState) => ({
+        this.setState(prevState => ({
           images: [...prevState.images, ...images.hits],
           status: Status.RESOLVED,
         }));
       })
-      .catch((error) => this.setState({ error, status: Status.REJECTED }))
+      .catch(error => this.setState({ error, status: Status.REJECTED }))
       .finally(() => {
         setTimeout(() => {
           window.scrollTo({
             top: document.documentElement.scrollHeight,
-            behavior: "smooth",
+            behavior: 'smooth',
           });
         }, 500);
       });
   }
 
   onClickLoadMore = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       currentPage: prevState.currentPage + 1,
     }));
   };
@@ -83,9 +83,9 @@ export default class ImageGalleryInfo extends Component {
         {status === Status.IDLE && (
           <div
             style={{
-              margin: "20px auto",
-              textAlign: "center",
-              fontSize: "20px",
+              margin: '20px auto',
+              textAlign: 'center',
+              fontSize: '20px',
             }}
           >
             Please, enter a query!

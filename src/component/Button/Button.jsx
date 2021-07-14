@@ -1,12 +1,12 @@
-import s from "./Button.module.css";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import { Btn } from './ButtonLoad.styled';
 
 export default function Button({ onClickLoadMore }) {
   return (
     <>
-      <button type="button" className={s.Button} onClick={onClickLoadMore}>
+      <Btn type="button" onClick={onClickLoadMore}>
         Load more
-      </button>
+      </Btn>
     </>
   );
 }
