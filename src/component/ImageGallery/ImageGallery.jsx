@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import { List } from './ImageGallery.styled';
 
-export default function ImageGallery({ images }) {
+export default function ImageGallery({ images, onSetImgInfo }) {
   return (
     <List>
       {images &&
@@ -14,6 +14,7 @@ export default function ImageGallery({ images }) {
               alt={image.tags}
               largeImageURL={image.largeImageURL}
               key={image.id}
+              onSetImgInfo={onSetImgInfo}
             />
           );
         })}

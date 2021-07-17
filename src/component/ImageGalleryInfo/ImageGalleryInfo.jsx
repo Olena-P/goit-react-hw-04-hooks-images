@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import pixabayAPI from '../../service/pixabay-api';
 import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 import { toast } from 'react-toastify';
 
 const Status = {
@@ -19,6 +20,8 @@ export default class ImageGalleryInfo extends Component {
     status: Status.IDLE,
     error: null,
     currentPage: 1,
+    showModal: false,
+    largeImageURL: '',
   };
 
   static propTypes = {
@@ -69,6 +72,17 @@ export default class ImageGalleryInfo extends Component {
       });
   }
 
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
+  setImgInfo = ({ largeImageURL, tags }) => {
+    this.setState({ largeImageURL, tags });
+    this.toggleModal();
+  };
+
   onClickLoadMore = () => {
     this.setState(prevState => ({
       currentPage: prevState.currentPage + 1,
@@ -76,7 +90,7 @@ export default class ImageGalleryInfo extends Component {
   };
 
   render() {
-    const { images, status } = this.state;
+    const { images, status, alt, largeImageURL, showModal  } = this.state;
 
     return (
       <>
@@ -93,8 +107,11 @@ export default class ImageGalleryInfo extends Component {
         )}
         {images.length > 0 && (
           <>
-            <ImageGallery images={images} />
+            <ImageGallery images={images} onSetImgInfo={this.setImgInfo} />
             <Button onClickLoadMore={this.onClickLoadMore} />
+               {showModal && (
+          <Modal onClose={this.toggleModal} src={largeImageURL} alt={alt} />
+        )}
           </>
         )}
 
