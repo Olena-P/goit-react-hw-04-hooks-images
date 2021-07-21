@@ -14,6 +14,8 @@ export default class Searchbar extends Component {
     imageName: '',
   };
 
+  // const[imageName, setimageName] = useState('');
+
   handleNameChange = event => {
     this.setState({ imageName: event.currentTarget.value.toLowerCase() });
   };

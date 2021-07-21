@@ -7,26 +7,23 @@ const ImageGalleryItem = ({
   tags = "",
   onSetImgInfo
 }) => {
-    return (
-      <Item>
-        <Image
-          src={src}
-          alt={tags}
-          onClick={() => {
-          onSetImgInfo({ largeImageURL, tags });
-        }}/>
-
-     
-      </Item>
-    );
-
+  return (
+    <Item>
+      <Image
+        src={src}
+        alt={tags}
+        onClick={() => {
+        onSetImgInfo({ largeImageURL, tags });
+      }}/>
+    </Item>
+  );
 };
 
 ImageGalleryItem.propTypes = {
-    src: PropTypes.string.isRequired,
-    tags: PropTypes.string.isRequired,
-    largeImageURL: PropTypes.string.isRequired,
-    onSetImgInfo: PropTypes.func.isRequired,
+  src: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+  onSetImgInfo: PropTypes.func.isRequired,
 };
   
 export default ImageGalleryItem
