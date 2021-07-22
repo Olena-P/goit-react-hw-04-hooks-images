@@ -67,9 +67,9 @@ export default function App () {
     setShowModal(!showModal);
   }
   
-  const setImgInfo = ({ largeImageURL, tags }) => {
+  const setImgInfo = ({ largeImageURL, alt }) => {
     setLargeImageURL(largeImageURL);
-    setAlt(tags);
+    setAlt(alt);
     toggleModal();
   }
   
@@ -99,8 +99,8 @@ export default function App () {
           <ImageGallery images={images} onSetImgInfo={setImgInfo} />
           <Button onClickLoadMore={onClickLoadMore} />
             {showModal && (
-        <Modal onClose={toggleModal} src={largeImageURL} alt={alt} />
-      )}
+              <Modal onClose={toggleModal} largeImageURL={largeImageURL} alt={alt} />
+            )}
         </>
       )}
       {status === Status.PENDING && (
