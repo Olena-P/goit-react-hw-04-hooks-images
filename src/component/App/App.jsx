@@ -3,7 +3,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import Loader from 'react-loader-spinner';
 import Searchbar from '../Searchbar/Searchbar';
 import Container from '../Container/Container';
-
 import pixabayAPI from '../service/pixabay-api';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
@@ -20,6 +19,7 @@ export default function App () {
   const [imageName, setImageName] = useState('');
   const [images, setImages] = useState([]);
   const [status, setStatus] = useState(Status.IDLE);
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
   const [alt, setAlt] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,10 +45,8 @@ export default function App () {
         if (images.total === 0) {
           toast.dark('No images. Please try another query!');
           setStatus(Status.REJECTED);
-
           return;
         }
-
     
         setImages(prevState => [...prevState, ...images.hits])
         setStatus(Status.RESOLVED)
@@ -75,10 +73,11 @@ export default function App () {
     toggleModal();
   }
   
-  const onClickLoadMore = () => {
-    currentPage(prevState => prevState + 1);
+  const  onClickLoadMore = () => {
+    setCurrentPage(prevState => 
+      prevState + 1
+    );
   };
-
 
   return (
     <Container>
